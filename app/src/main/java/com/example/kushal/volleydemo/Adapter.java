@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
-public class Adapter extends RecyclerView.Adapter<Adapter.jay>
+public class Adapter extends RecyclerView.Adapter<Adapter.Holder>
 {
 
     private Context context;
@@ -25,16 +25,16 @@ public class Adapter extends RecyclerView.Adapter<Adapter.jay>
 
     @NonNull
     @Override
-    public jay onCreateViewHolder(@NonNull ViewGroup viewGroup, int i)
+    public Holder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i)
     {
         LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
         View view = inflater.inflate(R.layout.adapter,viewGroup,false);
 
-        return new jay(view);
+        return new Holder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull jay holder, int i)
+    public void onBindViewHolder(@NonNull Holder holder, int i)
     {
         User user = users[i];
         holder.textView.setText(user.getLogin());
@@ -47,7 +47,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.jay>
         return users.length;
     }
 
-    public class jay extends RecyclerView.ViewHolder
+    public class Holder extends RecyclerView.ViewHolder
     {
         ImageView imageView;
         TextView textView;
